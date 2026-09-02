@@ -11,7 +11,16 @@ layers:
     - U
     - Y
     - {t: '''', s: '"'}
-  - [A, R, S, T, G, M, N, E, I, O]
+  - - {t: A, h: ⌘}
+    - {t: R, h: ⎇}
+    - {t: S, h: ⌃}
+    - {t: T, h: LSHIFT}
+    - G
+    - M
+    - {t: N, h: RSHIFT}
+    - {t: E, h: ⌃}
+    - {t: I, h: ⎇}
+    - {t: O, h: ⌘}
   - - Z
     - X
     - C
@@ -24,47 +33,10 @@ layers:
     - {t: '?', s: '!'}
   - - cmd
     - num
-    - {t: ⇧, s: ⇪}
+    - BSPC
     - SPACE
     - nav
     - {t: default, h: toggle}
-  game:
-  - - ↹
-    - Q
-    - W
-    - E
-    - R
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - ⇧
-    - A
-    - S
-    - D
-    - F
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - ⌃
-    - Z
-    - X
-    - C
-    - V
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - ESC
-    - {t: ▽, type: trans}
-    - SPACE
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
   num:
   - - '~'
     - '@'
@@ -131,7 +103,7 @@ layers:
     - {type: held}
     - {t: ▽, type: trans}
   fun:
-  - - {t: game, h: toggle}
+  - - {t: ▽, type: trans}
     - MUTE
     - VOL DN
     - VOL UP
