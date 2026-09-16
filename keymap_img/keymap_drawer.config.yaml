@@ -91,175 +91,175 @@ parse_config:
   assign_combos_to_layers: false
   preprocess: true
   qmk_keycode_map:
-    AMPERSAND: '&'
-    AMPR: '&'
-    ASTERISK: '*'
-    ASTR: '*'
-    AT: '@'
+    AMPERSAND: "&"
+    AMPR: "&"
+    ASTERISK: "*"
+    ASTR: "*"
+    AT: "@"
     BACKSLASH: \
     BSLS: \
     CIRC: ^
     CIRCUMFLEX: ^
-    COLN: ':'
-    COLON: ':'
-    COMM: ','
-    COMMA: ','
+    COLN: ":"
+    COLON: ":"
+    COMM: ","
+    COMMA: ","
     DLR: $
     DOLLAR: $
     DOT: .
     DOUBLE_QUOTE: '"'
     DQT: '"'
     DQUO: '"'
-    EQL: '='
-    EQUAL: '='
-    EXCLAIM: '!'
-    EXLM: '!'
-    GRAVE: '`'
-    GRV: '`'
-    GT: '>'
-    HASH: '#'
+    EQL: "="
+    EQUAL: "="
+    EXCLAIM: "!"
+    EXLM: "!"
+    GRAVE: "`"
+    GRV: "`"
+    GT: ">"
+    HASH: "#"
     LABK: <
-    LBRC: '['
-    LCBR: '{'
+    LBRC: "["
+    LCBR: "{"
     LEFT_ANGLE_BRACKET: <
-    LEFT_BRACKET: '['
-    LEFT_CURLY_BRACE: '{'
+    LEFT_BRACKET: "["
+    LEFT_CURLY_BRACE: "{"
     LEFT_PAREN: (
     LPRN: (
     LT: <
-    MINS: '-'
-    MINUS: '-'
-    'NO': ''
-    NONUS_HASH: '#'
-    NUHS: '#'
-    PERC: '%'
-    PERCENT: '%'
-    PIPE: '|'
+    MINS: "-"
+    MINUS: "-"
+    "NO": ""
+    NONUS_HASH: "#"
+    NUHS: "#"
+    PERC: "%"
+    PERCENT: "%"
+    PIPE: "|"
     PLUS: +
-    QUES: '?'
-    QUESTION: '?'
-    QUOT: ''''
-    QUOTE: ''''
-    RABK: '>'
-    RBRC: ']'
-    RCBR: '}'
-    RIGHT_ANGLE_BRACKET: '>'
-    RIGHT_BRACKET: ']'
-    RIGHT_CURLY_BRACE: '}'
+    QUES: "?"
+    QUESTION: "?"
+    QUOT: "'"
+    QUOTE: "'"
+    RABK: ">"
+    RBRC: "]"
+    RCBR: "}"
+    RIGHT_ANGLE_BRACKET: ">"
+    RIGHT_BRACKET: "]"
+    RIGHT_CURLY_BRACE: "}"
     RIGHT_PAREN: )
     RPRN: )
     SCLN: ;
     SEMICOLON: ;
     SLASH: /
     SLSH: /
-    TILD: '~'
-    TILDE: '~'
-    TRANSPARENT: ''
-    TRNS: ''
+    TILD: "~"
+    TILDE: "~"
+    TRANSPARENT: ""
+    TRNS: ""
     UNDERSCORE: _
     UNDS: _
     SPACE: ⎵
   raw_binding_map:
-    '&mm_grescm': {t: '⎋', s: '` ~'}
-    '&mm_bspc_del': {t: '⌫', s: '⌦'}
-    '&bspc_del': {t: '⌫', s: '⌦'}
-    '&mm_grescm_gui': {t: ⎋, h: ⌘, s: '~ `'}
-    '&mm_spc_unds_layer': {t: '⎵', h: 'SYM', s: '_ -'}
-    '&mm_plus_minus': {t: '+', s: '-'}
-    '&mm_grave_caret': {t: '`', s: '^'}
-    '&mm_bracket_r': {t: '(', s: ')'}
-    '&mm_comma_semi_meh': {t: ',', s: ';', h: 'MEH'}
-    '&mm_dot_colon': {t: '.', s: ':'}
-    '&mm_none_undo': ''
-    '&mm_left_word_cut': '↞'
-    '&mm_up_save': '↑'
-    '&mm_down_copy': '↓'
-    '&mm_none_paste': ''
-    '&mm_1_cut': '1'
-    '&mm_2_copy': '2'
-    '&mm_5_save': '5'
-    '&swapper_cmd_tab': {t: '⌘↹'}
-    '&td_at_email': {t: '@'}
-    '&num_word': 'NUM'
-    '&nav_word': 'NAV'
-    '&caps_word_capslock': "Caps\nWord"
-    '&caps_word': '⇪'
-    '&td_shift_l': '⇧'
-    '&td_shift_r': '⇧'
-    '&td_nav_layer': {t: '⏎', h: 'NAV'}
-    '&td_bt_clear': 'BT CLR'
-    '&m_type_md_code_block': '```'
-    '&kt LSHFT': "⇧\nLock"
-    '&lt_num_word 4 0': {t: "Num\nWord", h: 'Num'}
-    '&ltog LGUI 5': {t: "Cancel\nNav", h: '⌘'}
-    '&ltog LGUI 6': {t: "Cancel\nNum", h: '⌘'}
-    '&ltog LGUI 7': {t: "Cancel\nSym", h: '⌘'}
-    '&ltog LGUI 8': {t: "Cancel\nFunc", h: '⌘'}
-    '&ltog LGUI 9': {t: "Cancel\nAdjust", h: '⌘'}
-  skip_binding_parsing: false
+    "&mm_grescm": { t: "⎋", s: "` ~" }
+    "&mm_bspc_del": { t: "⌫", s: "⌦" }
+    "&bspc_del": { t: "⌫", s: "⌦" }
+    "&mm_grescm_gui": { t: ⎋, h: ⌘, s: "~ `" }
+    "&mm_spc_unds_layer": { t: "⎵", h: "SYM", s: "_ -" }
+    "&mm_plus_minus": { t: "+", s: "-" }
+    "&mm_grave_caret": { t: "`", s: "^" }
+    "&mm_bracket_r": { t: "(", s: ")" }
+    "&mm_comma_semi_meh": { t: ",", s: ";", h: "MEH" }
+    "&mm_dot_colon": { t: ".", s: ":" }
+    "&mm_none_undo": ""
+    "&mm_left_word_cut": "↞"
+    "&mm_up_save": "↑"
+    "&mm_down_copy": "↓"
+    "&mm_none_paste": ""
+    "&mm_1_cut": "1"
+    "&mm_2_copy": "2"
+    "&mm_5_save": "5"
+    "&swapper_cmd_tab": { t: "⌘↹" }
+    "&td_at_email": { t: "@" }
+    "&num_word": "NUM"
+    "&nav_word": "NAV"
+    "&caps_word_capslock": "Caps\nWord"
+    "&caps_word": "⇪"
+    "&td_shift_l": "⇧"
+    "&td_shift_r": "⇧"
+    "&td_nav_layer": { t: "⏎", h: "NAV" }
+    "&td_bt_clear": "BT CLR"
+    "&m_type_md_code_block": "```"
+    "&kt LSHFT": "⇧\nLock"
+    "&lt_num_word 4 0": { t: "Num\nWord", h: "Num" }
+    "&ltog LGUI 5": { t: "Cancel\nNav", h: "⌘" }
+    "&ltog LGUI 6": { t: "Cancel\nNum", h: "⌘" }
+    "&ltog LGUI 7": { t: "Cancel\nSym", h: "⌘" }
+    "&ltog LGUI 8": { t: "Cancel\nFunc", h: "⌘" }
+    "&ltog LGUI 9": { t: "Cancel\nAdjust", h: "⌘" }
+  skip_binding_parsing: true
   zmk_keycode_map:
-    AMPERSAND: '&'
-    AMPS: '&'
-    APOS: {t: "'", s: '"'}
+    AMPERSAND: "&"
+    AMPS: "&"
+    APOS: { t: "'", s: '"' }
     APOSTROPHE: <
-    ASTERISK: '*'
-    ASTRK: '*'
-    AT: '@'
-    AT_SIGN: '@'
-    BACKSLASH: {t: '\', s: '|'}
+    ASTERISK: "*"
+    ASTRK: "*"
+    AT: "@"
+    AT_SIGN: "@"
+    BACKSLASH: { t: '\', s: "|" }
     BSLH: \
     CARET: ^
-    COLON: ':'
-    COMMA: {t: ',', s: '<'}
+    COLON: ":"
+    COMMA: { t: ",", s: "<" }
     DLLR: $
     DOLLAR: $
-    DOT: {t: '.', s: '>'}
+    DOT: { t: ".", s: ">" }
     DOUBLE_QUOTES: '"'
     DQT: '"'
-    EQUAL: {t: '=', s: '+'}
-    EXCL: '!'
-    EXCLAMATION: '!'
+    EQUAL: { t: "=", s: "+" }
+    EXCL: "!"
+    EXCLAMATION: "!"
     FSLH: /
-    GRAVE: {t: '`', s: '~'}
-    GREATER_THAN: '>'
-    GT: '>'
-    HASH: '#'
-    LBKT: {t: '[', s: '{'}
-    LBRC: '{'
-    LEFT_BRACE: '{'
-    LEFT_BRACKET: '['
+    GRAVE: { t: "`", s: "~" }
+    GREATER_THAN: ">"
+    GT: ">"
+    HASH: "#"
+    LBKT: { t: "[", s: "{" }
+    LBRC: "{"
+    LEFT_BRACE: "{"
+    LEFT_BRACKET: "["
     LEFT_PARENTHESIS: (
     LESS_THAN: <
     LPAR: (
     LT: <
-    MINUS: {t: '-', s: '_'}
+    MINUS: { t: "-", s: "_" }
     NON_US_BACKSLASH: \
-    NON_US_BSLH: '|'
-    NON_US_HASH: '#'
-    NUHS: '#'
-    PERCENT: '%'
+    NON_US_BSLH: "|"
+    NON_US_HASH: "#"
+    NUHS: "#"
+    PERCENT: "%"
     PERIOD: .
-    PIPE: '|'
-    PIPE2: '|'
+    PIPE: "|"
+    PIPE2: "|"
     PLUS: +
-    POUND: '#'
-    PRCNT: '%'
-    QMARK: '?'
-    QUESTION: '?'
-    RBKT: {t: ']', s: '}'}
-    RBRC: '}'
-    RIGHT_BRACE: '}'
-    RIGHT_BRACKET: ']'
+    POUND: "#"
+    PRCNT: "%"
+    QMARK: "?"
+    QUESTION: "?"
+    RBKT: { t: "]", s: "}" }
+    RBRC: "}"
+    RIGHT_BRACE: "}"
+    RIGHT_BRACKET: "]"
     RIGHT_PARENTHESIS: )
     RPAR: )
-    SEMI: {t: ';', s: ':'}
-    SEMICOLON:  {t: ';', s: ':'}
-    SINGLE_QUOTE:  {t: '''', s: '"'}
-    SLASH: {t: '/', s: '?'}
-    SQT: ''''
-    STAR: '*'
-    TILDE: '~'
-    TILDE2: '~'
+    SEMI: { t: ";", s: ":" }
+    SEMICOLON: { t: ";", s: ":" }
+    SINGLE_QUOTE: { t: "'", s: '"' }
+    SLASH: { t: "/", s: "?" }
+    SQT: "'"
+    STAR: "*"
+    TILDE: "~"
+    TILDE2: "~"
     UNDER: _
     UNDERSCORE: _
     LCTRL: ⌃
@@ -283,33 +283,33 @@ parse_config:
     UP: ↑
     DOWN: ↓
     TAB: ↹
-    RETURN: '⏎'
-    ESCAPE: '⎋'
-    C_REWIND: '⏮'
-    C_FAST_FORWARD: '⏭'
-    C_PAUSE: '⏯'
+    RETURN: "⏎"
+    ESCAPE: "⎋"
+    C_REWIND: "⏮"
+    C_FAST_FORWARD: "⏭"
+    C_PAUSE: "⏯"
     C_MUTE: "VOL\nMUTE"
     C_VOLUME_DOWN: "VOL\nDOWN"
     C_VOLUME_UP: "VOL\nUP"
-    C_BRIGHTNESS_DEC: '☀↓'
-    C_BRIGHTNESS_INC: '☀↑'
+    C_BRIGHTNESS_DEC: "☀↓"
+    C_BRIGHTNESS_INC: "☀↑"
     LA(LEFT): ↞
     LA(RIGHT): ↠
     LG(LEFT): ⇤
     LG(RIGHT): ⇥
-    'LS(LC(LG(LALT)))': 'HYPER'
-    'RS(RC(RG(RALT)))': 'HYPER'
-    'LC(LG(LALT))': 'MEH'
-    'RC(RG(RALT))': 'MEH'
-    'LG(Q)': '⌘Q'
-    'LG(W)': '⌘W'
-    'LG(GRAVE)': '⌘`'
-    'LG(Z)': '⌘Z'
-    'LG(X)': '⌘X'
-    'LG(C)': '⌘C'
-    'LG(V)': '⌘V'
-    'LC(TAB)': '⌃↹'
-    'LS(LC(TAB))': '⌃⇧↹'
+    "LS(LC(LG(LALT)))": "HYPER"
+    "RS(RC(RG(RALT)))": "HYPER"
+    "LC(LG(LALT))": "MEH"
+    "RC(RG(RALT))": "MEH"
+    "LG(Q)": "⌘Q"
+    "LG(W)": "⌘W"
+    "LG(GRAVE)": "⌘`"
+    "LG(Z)": "⌘Z"
+    "LG(X)": "⌘X"
+    "LG(C)": "⌘C"
+    "LG(V)": "⌘V"
+    "LC(TAB)": "⌃↹"
+    "LS(LC(TAB))": "⌃⇧↹"
 #   zmk_combos:
 #     combo_tog_nav_word: {'a': 'bottom', 'o': -0.25}
 #     combo_tog_num_word: {'a': 'bottom', 'o': 0.0}
