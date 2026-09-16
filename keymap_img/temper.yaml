@@ -1,6 +1,6 @@
 layout: {zmk_keyboard: temper}
 layers:
-  default:
+  NORMAL:
   - - Q
     - W
     - F
@@ -10,17 +10,17 @@ layers:
     - L
     - U
     - Y
-    - {t: '''', s: '"'}
-  - - {t: A, h: ⌘}
+    - {t: ;, s: ':'}
+  - - A
     - {t: R, h: ⎇}
-    - {t: S, h: ⌃}
-    - {t: T, h: LSHIFT}
+    - {t: S, h: ⌘}
+    - {t: T, h: ⌃}
     - G
     - M
-    - {t: N, h: RSHIFT}
-    - {t: E, h: ⌃}
+    - {t: N, h: ⌃}
+    - {t: E, h: ⌘}
     - {t: I, h: ⎇}
-    - {t: O, h: ⌘}
+    - O
   - - Z
     - X
     - C
@@ -28,151 +28,87 @@ layers:
     - V
     - K
     - H
-    - {t: ',', s: ;}
-    - {t: ., s: ':'}
-    - {t: '?', s: '!'}
-  - - cmd
-    - num
-    - BSPC
-    - SPACE
-    - nav
-    - {t: default, h: toggle}
-  num:
-  - - '~'
+    - {t: ',', s: <}
+    - {t: ., s: '>'}
+    - /
+  - - {t: LSHIFT, h: sticky}
+    - BACKSPACE
+    - {t: ONESHOT, h: Gui+Sft+Alt+⌃}
+    - ENTER
+    - {t: SPACE, h: Sft+Alt+⌃}
+    - '&key_repeat'
+  ONESHOT:
+  - - '!'
     - '@'
+    - '#'
+    - $
+    - '%'
+    - ^
+    - '&'
+    - '*'
+    - '~'
+    - {t: '=', s: +}
+  - - ESC
+    - (
+    - )
     - '{'
     - '}'
-    - '%'
-    - '*'
-    - '7'
-    - '8'
-    - '9'
-    - {t: '-', s: _}
-  - [^, '#', (, ), $, _, '4', '5', '6', +]
-  - - {t: '&', s: '|'}
+    - +
+    - {t: NAV, h: toggle}
+    - {t: NUM, h: toggle}
+    - _
+    - {t: '`', s: '~'}
+  - - ↹
+    - '['
+    - ']'
     - <
-    - {t: '[', s: '{'}
-    - {t: ']', s: '}'}
     - '>'
-    - {t: /, s: \}
-    - '1'
-    - '2'
-    - '3'
-    - {t: '=', s: +}
-  - - {t: ▽, type: trans}
-    - {type: held}
-    - {t: ▽, type: trans}
-    - '0'
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  nav:
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - DEL
-    - HOME
-    - END
-    - ↹
-    - BSPC
-  - - {t: ⇧, h: sticky}
-    - {t: ⌃, h: sticky}
-    - {t: ⎇, h: sticky}
-    - {t: ⌘, h: sticky}
-    - {t: ▽, type: trans}
-    - ←
-    - ↓
-    - ↑
-    - →
-    - {t: ESC, s: '`'}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - RET
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {type: held}
-    - {t: ▽, type: trans}
-  fun:
-  - - {t: ▽, type: trans}
-    - MUTE
+    - \
+    - '|'
+    - {t: '''', s: '"'}
+    - '"'
+    - '?'
+  - - {t: LSHIFT, h: sticky}
+    - BACKSPACE
+    - {t: NAV, h: Gui+Sft+Alt+⌃}
+    - {t: NORMAL, h: toggle}
+    - {t: SPACE, h: Sft+Alt+⌃}
+    - '&key_repeat'
+  NAV:
+  - - {t: '`', s: '~'}
+    - '&msc SCRL_LEFT'
+    - '&mmv MOVE_UP'
+    - '&msc SCRL_RIGHT'
+    - ⌘Q
+    - BACK
+    - ⌃⇧↹
+    - ⌃↹
+    - FORWARD
+    - BACKSPACE
+  - [ESC, '&mmv MOVE_LEFT', '&mmv MOVE_DOWN', '&mmv MOVE_RIGHT', DELETE, ←, ↓, ↑, →, ENTER]
+  - [↹, '&mkp RCLK', '&msc SCRL_UP', '&msc SCRL_DOWN', '&', '&mkp LCLK', '&mmv MOVE_X(300)', '&mmv MOVE_X(600)', '&mmv MOVE_X(1200)', '&']
+  - - {t: LSHIFT, h: sticky}
+    - BACKSPACE
+    - {t: NUM, h: Gui+Sft+Alt+⌃}
+    - {t: NORMAL, h: toggle}
+    - {t: SPACE, h: Sft+Alt+⌃}
+    - '&key_repeat'
+  NUM:
+  - ['&', PP, PREV, NEXT, '&', '7', '8', '9', BACKSPACE, NONE]
+  - - ESC
+    - '&'
     - VOL DN
     - VOL UP
-    - OUT USB
-    - {t: ▽, type: trans}
-    - F7
-    - F8
-    - F9
-    - F12
-  - - {t: BT, h: '0'}
-    - {t: BT, h: '1'}
-    - {t: BT, h: '2'}
-    - {t: BT, h: '3'}
-    - {t: BT, h: '4'}
-    - {t: ▽, type: trans}
-    - F4
-    - F5
-    - F6
-    - F11
-  - - BT CLR
-    - PREV
-    - PP
-    - NEXT
-    - OUT BLE
-    - {t: ▽, type: trans}
-    - F1
-    - F2
-    - F3
-    - F10
-  - - {t: ▽, type: trans}
-    - {type: held}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {type: held}
-    - {t: ▽, type: trans}
-  cmd:
-  - - ⌘Q
-    - ⌘W
-    - F
-    - Gui+P
-    - B
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - ⇧
-    - ⌃
-    - ⎇
-    - ⌘
-    - Gui+G
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - ⌘Z
-    - ⌘X
-    - ⌘C
-    - D
-    - ⌘V
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-  - - {type: held}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
-    - {t: ▽, type: trans}
+    - '&'
+    - {t: '=', s: +}
+    - '4'
+    - '5'
+    - '6'
+    - ENTER
+  - [↹, '&', BRI DN, BRI UP, '&', '0', '1', '2', '3', '&']
+  - - {t: LSHIFT, h: sticky}
+    - BACKSPACE
+    - {t: NORMAL, h: Gui+Sft+Alt+⌃}
+    - {t: NORMAL, h: toggle}
+    - {t: SPACE, h: Sft+Alt+⌃}
+    - '&key_repeat'

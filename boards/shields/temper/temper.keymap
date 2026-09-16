@@ -179,10 +179,10 @@
                 &msc SCRL_RIGHT
                 &kp LG(Q)
 
-                &kp K_BACK
+                &kp C_AC_BACK
                 &kp LS(LC(TAB))
                 &kp LC(TAB)
-                &kp K_FORWARD
+                &kp C_AC_FORWARD
                 &kp BACKSPACE
 
                 &kp ESC
