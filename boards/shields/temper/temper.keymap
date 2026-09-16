@@ -1,160 +1,282 @@
-/*
- * Copyright (c) 2020 The ZMK Contributors
- *
- * SPDX-License-Identifier: MIT
- */
-
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/pointing.h>
 
-#define DEFAULT 0
-#define NUM 1
-#define NAV 2
-#define FUN 3
-#define CMD 4
+/*
+ * Compound modifiers.
+ *
+ * ZMK permits modifier functions to be nested and applied to
+ * modifier keycodes, so these represent held modifier combinations.
+ */
+#define MEH   LS(LA(LCTRL))
+#define HYPER LG(LS(LA(LCTRL)))
 
-# define ______ &trans
+/*
+ * Thumb 3:
+ *   tap  -> next layer
+ *   hold -> Hyper
+ *
+ * Custom hold-taps use two binding cells:
+ *   first  parameter -> hold behavior
+ *   second parameter -> tap behavior
+ */
+#define NEXT_LAYER(behavior, layer) behavior HYPER layer
 
 / {
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        tri_layer {
-            if-layers = <NUM NAV>;
-            then-layer = <FUN>;
-        };
-    };
     behaviors {
-        bspc_del: backspace_delete {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp DELETE>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-            keep-mods = <(MOD_RSFT)>;
-        };
-        super_bspc: super_backspace {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp BACKSPACE>, <&kp LA(BACKSPACE)>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-        smart_shft: smart_shift {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp LSHFT>, <&caps_word>;
-            mods = <(MOD_LSFT)>;
-        };
-        comma_semi: comma_semi {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp SEMI>;
-            mods = <(MOD_LSFT)>;
-        };
-        dot_colon: dot_colon {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp COLON>;
-            mods = <(MOD_LSFT)>;
-        };
-        qmrk_excl: qmrk_excl {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp QMARK>, <&kp EXCL>;
-            mods = <(MOD_LSFT)>;
-        };
-        slh_morph: slh_morph {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp FSLH>, <&kp BSLH>;
-            mods = <(MOD_LSFT)>;
-        };
-        amps_morph: amps_morph {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp AMPS>, <&kp PIPE>;
-            mods = <(MOD_LSFT)>;
-        };
-        hm: homerow_mods {
+        next_layer: next_layer {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
+            flavor = "hold-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <0>;
+            bindings = <&kp>, <&to>;
+        };
+
+        /*
+         * Space:
+         *   tap  -> Space
+         *   hold -> Meh
+         */
+        space_meh: space_meh {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
             flavor = "balanced";
+            tapping-term-ms = <200>;
             bindings = <&kp>, <&kp>;
         };
     };
-        keymap {
-                compatible = "zmk,keymap";
 
-                default_layer {
-                        bindings = <
-// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-        &kp Q         &kp W         &kp F         &kp P         &kp B             &kp J         &kp L         &kp U         &kp Y       &kp APOS   
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &hm LGUI A    &hm LALT R   &hm LCTRL S   &hm LSHIFT T     &kp G             &kp M      &hm RSHIFT N  &hm RCTRL E    &hm RALT I    &hm RGUI O
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-        &kp Z         &kp X         &kp C         &kp D         &kp V             &kp K         &kp H      &comma_semi    &dot_colon    &qmrk_excl
-// ╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────╯
-                                   &mo CMD       &mo NUM     &kp BSPC           &kp SPACE      &mo NAV     &to DEFAULT
-//                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-                        >;
-                };
+    keymap {
+        compatible = "zmk,keymap";
 
-                num_layer {
-                        bindings = <
-// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-      &kp TILDE       &kp AT       &kp LBRC      &kp RBRC     &kp PRCNT          &kp STAR       &kp N7        &kp N8        &kp N9      &kp MINUS
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &kp CARET      &kp HASH      &kp LPAR      &kp RPAR      &kp DLLR         &kp UNDER       &kp N4        &kp N5        &kp N6      &kp PLUS
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &amps_morph     &kp LT       &kp LBKT      &kp RBKT       &kp GT          &slh_morph      &kp N1        &kp N2        &kp N3      &kp EQUAL
-// ╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────╯
-                                    ______        ______        ______            &kp N0        ______        ______
-//                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-                        >;
-                };
+        /*
+         * 0 NORMAL
+         *
+         * Q W F P B | J L U Y ;
+         * A R S T G | M N E I O
+         * Z X C D V | K H , . /
+         *
+         * T1 T2 T3 | T4 T5 T6
+         */
 
-                nav_layer {
-                        bindings = <
-// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-        ______        ______        ______        ______        ______           &kp DEL       &kp HOME      &kp END       &kp TAB       &kp BSPC
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &sk LSHFT     &sk LCTRL      &sk LALT      &sk LGUI       ______           &kp LEFT      &kp DOWN       &kp UP      &kp RIGHT       &gresc
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-        ______        ______        ______        ______        ______            ______        &kp RET       ______        ______        ______
-// ╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────╯
-                                    ______        ______        ______            ______        ______        ______
-//                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-                        >;
-                };
+        normal_layer {
+            display-name = "NORMAL";
 
-                fun_layer {
-                        bindings = <
-// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-       ______       &kp K_MUTE    &kp C_VOL_DN  &kp C_VOL_UP  &out OUT_USB         ______        &kp F7        &kp F8        &kp F9       &kp F12
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-     &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4         ______        &kp F4        &kp F5        &kp F6       &kp F11
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &bt BT_CLR    &kp C_PREV     &kp C_PP     &kp C_NEXT   &out OUT_BLE         ______        &kp F1        &kp F2        &kp F3       &kp F10
-// ╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────╯
-                                    ______        ______        ______            ______        ______        ______
-//                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-                        >;
-                };
+            bindings = <
+                &kp Q
+                &kp W
+                &kp F
+                &kp P
+                &kp B
 
-                cmd_layer {
-                        bindings = <
-// ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-       &kp LG(Q)    &kp LG(W)       &kp F       &kp LG(P)       &kp B             ______        ______        ______        ______        ______  
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-       &kp LSHFT    &kp LCTRL     &kp LALT      &kp LGUI      &kp LG(G)           ______        ______        ______        ______        ______
-// ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-       &kp LG(Z)    &kp LG(X)     &kp LG(C)       &kp D       &kp LG(V)           ______        ______        ______        ______        ______
-// ╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────╯
-                                    ______        ______        ______            ______        ______        ______
-//                             ╰─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────┴─────────────╯
-                        >;
-                };
+                &kp J
+                &kp L
+                &kp U
+                &kp Y
+                &kp SEMI
+
+                &kp A
+                &mt LALT R
+                &mt LGUI S
+                &mt LCTRL T
+                &kp G
+
+                &kp M
+                &mt RCTRL N
+                &mt RGUI E
+                &mt RALT I
+                &kp O
+
+                &kp Z
+                &kp X
+                &kp C
+                &kp D
+                &kp V
+
+                &kp K
+                &kp H
+                &kp COMMA
+                &kp DOT
+                &kp FSLH
+
+                &sk LSHIFT
+                &kp BACKSPACE
+                &next_layer HYPER 1
+                &kp ENTER
+                &space_meh MEH SPACE
+                &key_repeat
+            >;
         };
+
+        /*
+         * 1 ONESHOT / SYMBOLS
+         */
+
+        oneshot_layer {
+            display-name = "ONESHOT";
+
+            bindings = <
+                &kp EXCL
+                &kp AT
+                &kp HASH
+                &kp DLLR
+                &kp PRCNT
+
+                &kp CARET
+                &kp AMPS
+                &kp ASTERISK
+                &kp TILDE
+                &kp EQUAL
+
+                &kp ESC
+                &kp LEFT_PARENTHESIS
+                &kp RIGHT_PARENTHESIS
+                &kp LEFT_BRACE
+                &kp RIGHT_BRACE
+
+                &kp PLUS
+                &to 2
+                &to 3
+                &kp UNDERSCORE
+                &kp GRAVE
+
+                &kp TAB
+                &kp LEFT_BRACKET
+                &kp RIGHT_BRACKET
+                &kp LT
+                &kp GT
+
+                &kp BSLH
+                &kp PIPE
+                &kp APOS
+                &kp DQT
+                &kp QUESTION
+
+                &sk LSHIFT
+                &kp BACKSPACE
+                &next_layer HYPER 2
+                &to 0
+                &space_meh MEH SPACE
+                &key_repeat
+            >;
+        };
+
+        /*
+         * 2 NAV MAIN
+         *
+         * `   sL  mU  sR  Quit | Back PrevTab NextTab Forward Backspace
+         * Esc mL  mD  mR  Del  | Left Down    Up      Right   Enter
+         * Tab rC  sU  sD  &    | lC   Accel1  Accel2  Accel3  &
+         */
+
+        nav_layer {
+            display-name = "NAV";
+
+            bindings = <
+                &kp GRAVE
+                &msc SCRL_LEFT
+                &mmv MOVE_UP
+                &msc SCRL_RIGHT
+                &kp LG(Q)
+
+                &kp K_BACK
+                &kp LS(LC(TAB))
+                &kp LC(TAB)
+                &kp K_FORWARD
+                &kp BACKSPACE
+
+                &kp ESC
+                &mmv MOVE_LEFT
+                &mmv MOVE_DOWN
+                &mmv MOVE_RIGHT
+                &kp DELETE
+
+                &kp LEFT
+                &kp DOWN
+                &kp UP
+                &kp RIGHT
+                &kp ENTER
+
+                &kp TAB
+                &mkp RCLK
+                &msc SCRL_UP
+                &msc SCRL_DOWN
+                &kp AMPS
+
+                &mkp LCLK
+                &mmv MOVE_X(300)
+                &mmv MOVE_X(600)
+                &mmv MOVE_X(1200)
+                &kp AMPS
+
+                &sk LSHIFT
+                &kp BACKSPACE
+                &next_layer HYPER 3
+                &to 0
+                &space_meh MEH SPACE
+                &key_repeat
+            >;
+        };
+
+        /*
+         * 3 NUMBER / UTILS
+         */
+
+      num_layer {
+          display-name = "NUM";
+
+          bindings = <
+              &kp AMPS
+              &kp C_PP
+              &kp C_PREV
+              &kp C_NEXT
+              &kp AMPS
+
+              &none
+              &kp N7
+              &kp N8
+              &kp N9
+              &kp BACKSPACE
+
+              &kp ESC
+              &kp AMPS
+              &kp C_VOL_DN
+              &kp C_VOL_UP
+              &kp AMPS
+
+              &kp EQUAL
+              &kp N4
+              &kp N5
+              &kp N6
+              &kp ENTER
+
+              &kp TAB
+              &kp AMPS
+              &kp C_BRI_DN
+              &kp C_BRI_UP
+              &kp AMPS
+
+              &kp N0
+              &kp N1
+              &kp N2
+              &kp N3
+              &kp AMPS
+
+              &sk LSHIFT
+              &kp BACKSPACE
+              &next_layer HYPER 0
+              &to 0
+              &space_meh MEH SPACE
+              &key_repeat
+          >;
+      };
+    };
 };
+
+/*
+ * Mouse support is enabled in your .conf with:
+ *
+ *     CONFIG_ZMK_POINTING=y
+ *
+ * The mouse behaviors themselves are documented ZMK behavior bindings.
+ */
