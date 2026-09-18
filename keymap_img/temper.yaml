@@ -1,114 +1,22 @@
 layout: {zmk_keyboard: temper}
 layers:
   NORMAL:
-  - - Q
-    - W
-    - F
-    - P
-    - B
-    - J
-    - L
-    - U
-    - Y
-    - {t: ;, s: ':'}
-  - - A
-    - {t: R, h: ⎇}
-    - {t: S, h: ⌘}
-    - {t: T, h: ⌃}
-    - G
-    - M
-    - {t: N, h: ⌃}
-    - {t: E, h: ⌘}
-    - {t: I, h: ⎇}
-    - O
-  - - Z
-    - X
-    - C
-    - D
-    - V
-    - K
-    - H
-    - {t: ',', s: <}
-    - {t: ., s: '>'}
-    - /
-  - - {t: LSHIFT, h: sticky}
-    - BACKSPACE
-    - {t: ONESHOT, h: Gui+Sft+Alt+⌃}
-    - ENTER
-    - {t: SPACE, h: Sft+Alt+⌃}
-    - '&key_repeat'
+  - ['&kp Q', '&kp W', '&kp F', '&kp P', '&kp B', '&kp J', '&kp L', '&kp U', '&kp Y', '&kp SEMI']
+  - ['&kp A', '&mt LALT R', '&mt LGUI S', '&mt LCTRL T', '&kp G', '&kp M', '&mt RCTRL N', '&mt RGUI E', '&mt RALT I', '&kp O']
+  - ['&kp Z', '&kp X', '&kp C', '&kp D', '&kp V', '&kp K', '&kp H', '&kp COMMA', '&kp DOT', '&kp FSLH']
+  - ['&sk LSHIFT', '&kp BACKSPACE', '&sl 1', '&kp ENTER', '&space_meh LS(LA(LCTRL)) SPACE', '&key_repeat']
   ONESHOT:
-  - - '!'
-    - '@'
-    - '#'
-    - $
-    - '%'
-    - ^
-    - '&'
-    - '*'
-    - '~'
-    - {t: '=', s: +}
-  - - ESC
-    - (
-    - )
-    - '{'
-    - '}'
-    - +
-    - {t: NAV, h: toggle}
-    - {t: NUM, h: toggle}
-    - _
-    - {t: '`', s: '~'}
-  - - ↹
-    - '['
-    - ']'
-    - <
-    - '>'
-    - \
-    - '|'
-    - {t: '''', s: '"'}
-    - '"'
-    - '?'
-  - - {t: LSHIFT, h: sticky}
-    - BACKSPACE
-    - {t: NAV, h: Gui+Sft+Alt+⌃}
-    - {t: NORMAL, h: toggle}
-    - {t: SPACE, h: Sft+Alt+⌃}
-    - '&key_repeat'
+  - ['&kp EXCL', '&kp AT', '&kp HASH', '&kp DLLR', '&kp PRCNT', '&kp CARET', '&kp AMPS', '&kp ASTERISK', '&kp TILDE', '&kp EQUAL']
+  - ['&kp ESC', '&kp LEFT_PARENTHESIS', '&kp RIGHT_PARENTHESIS', '&kp LEFT_BRACE', '&kp RIGHT_BRACE', '&kp PLUS', '&to 2', '&to 3', '&kp MINUS', '&kp GRAVE']
+  - ['&kp TAB', '&kp LEFT_BRACKET', '&kp RIGHT_BRACKET', '&kp LT', '&kp GT', '&kp BSLH', '&kp PIPE', '&kp APOS', '&kp DQT', '&kp QUESTION']
+  - ['&sk LSHIFT', '&kp BACKSPACE', '&next_layer LG(LS(LA(LCTRL))) 2', '&to 0', '&space_meh LS(LA(LCTRL)) SPACE', '&key_repeat']
   NAV:
-  - - {t: '`', s: '~'}
-    - '&msc SCRL_LEFT'
-    - '&mmv MOVE_UP'
-    - '&msc SCRL_RIGHT'
-    - ⌘Q
-    - BACK
-    - ⌃⇧↹
-    - ⌃↹
-    - FORWARD
-    - BACKSPACE
-  - [ESC, '&mmv MOVE_LEFT', '&mmv MOVE_DOWN', '&mmv MOVE_RIGHT', DELETE, ←, ↓, ↑, →, ENTER]
-  - [↹, '&mkp RCLK', '&msc SCRL_UP', '&msc SCRL_DOWN', '&', '&mkp LCLK', '&mmv MOVE_X(300)', '&mmv MOVE_X(600)', '&mmv MOVE_X(1200)', '&']
-  - - {t: LSHIFT, h: sticky}
-    - BACKSPACE
-    - {t: NUM, h: Gui+Sft+Alt+⌃}
-    - {t: NORMAL, h: toggle}
-    - {t: SPACE, h: Sft+Alt+⌃}
-    - '&key_repeat'
+  - ['&kp GRAVE', '&msc SCRL_LEFT', '&mmv MOVE_UP', '&msc SCRL_RIGHT', '&kp LG(Q)', '&kp C_AC_BACK', '&kp LS(LC(TAB))', '&kp LC(TAB)', '&kp C_AC_FORWARD', '&kp BACKSPACE']
+  - ['&kp ESC', '&mmv MOVE_LEFT', '&mmv MOVE_DOWN', '&mmv MOVE_RIGHT', '&kp DELETE', '&kp LEFT', '&kp DOWN', '&kp UP', '&kp RIGHT', '&kp ENTER']
+  - ['&kp TAB', '&mkp RCLK', '&msc SCRL_UP', '&msc SCRL_DOWN', '&none', '&mkp LCLK', '&none', '&none', '&none', '&none']
+  - ['&sk LSHIFT', '&kp BACKSPACE', '&next_layer LG(LS(LA(LCTRL))) 3', '&to 0', '&space_meh LS(LA(LCTRL)) SPACE', '&key_repeat']
   NUM:
-  - ['&', PP, PREV, NEXT, '&', '7', '8', '9', BACKSPACE, NONE]
-  - - ESC
-    - '&'
-    - VOL DN
-    - VOL UP
-    - '&'
-    - {t: '=', s: +}
-    - '4'
-    - '5'
-    - '6'
-    - ENTER
-  - [↹, '&', BRI DN, BRI UP, '&', '0', '1', '2', '3', '&']
-  - - {t: LSHIFT, h: sticky}
-    - BACKSPACE
-    - {t: NORMAL, h: Gui+Sft+Alt+⌃}
-    - {t: NORMAL, h: toggle}
-    - {t: SPACE, h: Sft+Alt+⌃}
-    - '&key_repeat'
+  - ['&none', '&kp C_PP', '&kp C_PREV', '&kp C_NEXT', '&none', '&kp MINUS', '&kp N7', '&kp N8', '&kp N9', '&kp BACKSPACE']
+  - ['&kp ESC', '&none', '&kp C_VOL_DN', '&kp C_VOL_UP', '&none', '&kp EQUAL', '&kp N4', '&kp N5', '&kp N6', '&kp ENTER']
+  - ['&kp TAB', '&none', '&kp C_BRI_DN', '&kp C_BRI_UP', '&none', '&kp N0', '&kp N1', '&kp N2', '&kp N3', '&none']
+  - ['&sk LSHIFT', '&kp BACKSPACE', '&none', '&kp LG(LS(LA(LCTRL)))', '&space_meh LS(LA(LCTRL)) SPACE', '&key_repeat']
