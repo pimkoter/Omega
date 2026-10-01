@@ -27,26 +27,30 @@
             flavor = "balanced";
             require-prior-idle-ms = <150>;
             tapping-term-ms = <280>;
+
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <
-              RIGHT_KEYS
+                RIGHT_KEYS
             >;
             hold-trigger-on-release;
         };
+
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "balanced";
             require-prior-idle-ms = <150>;
             tapping-term-ms = <280>;
+
             quick-tap-ms = <175>;
             bindings = <&kp>, <&kp>;
             hold-trigger-key-positions = <
-              LEFT_KEYS
+                LEFT_KEYS
             >;
             hold-trigger-on-release;
         };
+
         nav_a: nav_a {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -60,19 +64,40 @@
                 25 26 27 28 29
             >;
         };
-        tap_hold: tap_hold {
+
+        meh_sym: meh_sym {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            bindings = <&sl>, <&kp>;
+            bindings = <&kp>, <&sl>;
         };
+
+        sym_double: sym_double {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            bindings = <&mo>, <&sl>;
+        };
+
+        td_sym: td_sym {
+            compatible = "zmk,behavior-tap-dance";
+            #binding-cells = <0>;
+            tapping-term-ms = <175>;
+            bindings = <
+                &meh_sym MEH SYM
+                &sym_double SYM SYM
+            >;
+        };
+
         td_shift_tab: td_shift_tab {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
             tapping-term-ms = <200>;
             bindings = <&sk LSHIFT>, <&kp TAB>;
         };
+
         td_z_esc: td_z_esc {
             compatible = "zmk,behavior-tap-dance";
             #binding-cells = <0>;
@@ -80,8 +105,10 @@
             bindings = <&kp Z>, <&kp ESC>;
         };
     };
+
     keymap {
         compatible = "zmk,keymap";
+
         default_layer {
             bindings = <
                 &kp Q        &kp W        &kp F        &kp P       &kp B
@@ -95,12 +122,14 @@
 
                                           &td_shift_tab
                                           &kp BSPC
-                                          &tap_hold SYM MEH
+                                          &td_sym
+
                                           &key_repeat
                                           &kp SPACE
                                           &lt SYS ENTER
             >;
         };
+
         sym_layer {
             bindings = <
                 &kp DLLR &kp PLUS     &kp LPAR     &kp RPAR     &kp AT
@@ -115,11 +144,13 @@
                                       &trans
                                       &trans
                                       &trans
+
                                       &trans
                                       &trans
                                       &trans
             >;
         };
+
         nav_layer {
             bindings = <
                 &trans   &trans   &trans &trans    &trans
@@ -129,16 +160,19 @@
                 &kp LEFT &kp DOWN &kp UP &kp RIGHT &trans
 
                 &trans   &trans   &trans &trans    &trans
+
                 &trans   &trans   &trans &trans    &trans
 
                                   &trans
                                   &trans
                                   &trans
+
                                   &trans
                                   &trans
                                   &trans
             >;
         };
+
         sys_layer {
             bindings = <
                 &kp F1     &kp F2       &kp F3     &kp F4       &kp F5
@@ -148,11 +182,12 @@
                 &none      &none        &none      &none        &none
 
                 &kp K_PREV &kp K_PP     &kp K_NEXT &kp C_BRI_DN &kp C_BRI_UP
-                &none      &none        &none      &bootloader  &sys_reset
+                &none      &none        &none      &none        &none
 
                                         &trans
                                         &trans
                                         &trans
+        
                                         &trans
                                         &trans
                                         &trans
@@ -178,12 +213,28 @@
  * │ESC │    │    │    │    │     │    │    │    │    │    │
  * └────┴────┴────┴────┴────┘     └────┴────┴────┴────┴────┘
  *
- * T1 = Shift / Tab
- * T2 = Backspace
- * T3 = SYM / Meh
- * T4 = Repeat
- * T5 = Space
- * T6 = Enter / SYS
+ * T1:
+ *   tap          = Sticky Shift
+ *   double tap   = Tab
+ *
+ * T2:
+ *   = Backspace
+ *
+ * T3:
+ *   tap          = one-shot SYM
+ *   hold         = MEH
+ *   double tap   = one-shot SYM
+ *   double+hold  = momentary SYM
+ *
+ * T4:
+ *   = Repeat
+ *
+ * T5:
+ *   = Space
+ *
+ * T6:
+ *   tap          = Enter
+ *   hold         = SYS
  *
  *
  * SYMBOLS
